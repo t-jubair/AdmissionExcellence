@@ -1,617 +1,445 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admission Excellence</title>
     <!-- Favicon (Logo in Title Bar) -->
-    <link
-      rel="icon"
-      href="logo.png"
-      type="image/png"
-    />
+    <link rel="icon" href="uploaded:Gemini_Generated_Image_2zlfn52zlfn52zlf-removebg-preview.png-6b9569d3-ffe6-4cba-8dc8-a425877a7409" type="image/png">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Inter Font -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-      body {
-        font-family: "Inter", sans-serif;
-        background-color: #f0f2f5; /* Light gray background */
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-      }
-      /* Header animation on load */
-      @keyframes slideInFromTop {
-        0% {
-          transform: translateY(-100%);
-          opacity: 0;
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5; /* Light gray background */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
-        100% {
-          transform: translateY(0);
-          opacity: 1;
+        /* Header animation on load */
+        @keyframes slideInFromTop {
+            0% { transform: translateY(-100%); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
         }
-      }
-      header {
-        animation: slideInFromTop 0.5s ease-out forwards;
-      }
+        header {
+            animation: slideInFromTop 0.5s ease-out forwards;
+        }
 
-      /* Under Construction Banner Animation */
-      .under-construction-banner {
-        background: linear-gradient(
-          135deg,
-          #fcd34d 0%,
-          #fbbf24 100%
-        ); /* Yellow-orange gradient */
-        border: 3px solid #f59e0b; /* Darker orange border */
-        animation: bounceIn 0.8s ease-out forwards,
-          subtleFloat 3s infinite ease-in-out 0.8s; /* Combined animations */
-        position: relative; /* For absolute positioning of illustration */
-        overflow: hidden; /* Hide overflow of illustration */
-      }
-      @keyframes bounceIn {
-        0%,
-        20%,
-        40%,
-        60%,
-        80%,
-        100% {
-          transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        /* Under Construction Banner Animation */
+        .under-construction-banner {
+            background: linear-gradient(135deg, #fcd34d 0%, #fbbf24 100%); /* Yellow-orange gradient */
+            border: 3px solid #f59e0b; /* Darker orange border */
+            animation: bounceIn 0.8s ease-out forwards, subtleFloat 3s infinite ease-in-out 0.8s; /* Combined animations */
+            position: relative; /* For absolute positioning of illustration */
+            overflow: hidden; /* Hide overflow of illustration */
         }
-        0% {
-          opacity: 0;
-          transform: scale3d(0.3, 0.3, 0.3);
+        @keyframes bounceIn {
+            0%, 20%, 40%, 60%, 80%, 100% {
+                transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+            }
+            0% {
+                opacity: 0;
+                transform: scale3d(0.3, 0.3, 0.3);
+            }
+            20% {
+                transform: scale3d(1.1, 1.1, 1.1);
+            }
+            40% {
+                transform: scale3d(0.9, 0.9, 0.9);
+            }
+            60% {
+                opacity: 1;
+                transform: scale3d(1.03, 1.03, 1.03);
+            }
+            80% {
+                transform: scale3d(0.97, 0.97, 0.97);
+            }
+            100% {
+                opacity: 1;
+                transform: scale3d(1, 1, 1);
+            }
         }
-        20% {
-          transform: scale3d(1.1, 1.1, 1.1);
+        @keyframes subtleFloat {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0); }
         }
-        40% {
-          transform: scale3d(0.9, 0.9, 0.9);
-        }
-        60% {
-          opacity: 1;
-          transform: scale3d(1.03, 1.03, 1.03);
-        }
-        80% {
-          transform: scale3d(0.97, 0.97, 0.97);
-        }
-        100% {
-          opacity: 1;
-          transform: scale3d(1, 1, 1);
-        }
-      }
-      @keyframes subtleFloat {
-        0% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-5px);
-        }
-        100% {
-          transform: translateY(0);
-        }
-      }
 
-      .construction-illustration {
-        position: absolute;
-        bottom: -10px;
-        left: -10px;
-        width: 100px;
-        height: 100px;
-        opacity: 0.2;
-        transform: rotate(-15deg);
-        transition: transform 0.3s ease;
-      }
-      .under-construction-banner:hover .construction-illustration {
-        transform: rotate(-25deg) scale(1.1);
-      }
+        .construction-illustration {
+            position: absolute;
+            bottom: -10px;
+            left: -10px;
+            width: 100px;
+            height: 100px;
+            opacity: 0.2;
+            transform: rotate(-15deg);
+            transition: transform 0.3s ease;
+        }
+        .under-construction-banner:hover .construction-illustration {
+            transform: rotate(-25deg) scale(1.1);
+        }
 
-      /* Custom styles for social login buttons for better visual appeal */
-      .social-button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0.75rem 1.5rem;
-        border-radius: 0.5rem;
-        font-weight: 500;
-        transition: all 0.2s ease-in-out;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      }
-      .social-button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-      }
-      .social-button img {
-        margin-right: 0.75rem;
-        width: 24px;
-        height: 24px;
-      }
-      .google-button {
-        background-color: #4285f4; /* Google Blue */
-        color: white;
-      }
-      .google-button:hover {
-        background-color: #357ae8;
-      }
-      .apple-button {
-        background-color: #000000; /* Apple Black */
-        color: white;
-      }
-      .apple-button:hover {
-        background-color: #333333;
-      }
-      .email-button {
-        background-color: #db4437; /* Similar to Gmail red */
-        color: white;
-      }
-      .email-button:hover {
-        background-color: #c23321;
-      }
+        /* Custom styles for social login buttons for better visual appeal */
+        .social-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .social-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        .social-button img {
+            margin-right: 0.75rem;
+            width: 24px;
+            height: 24px;
+        }
+        .google-button {
+            background-color: #4285F4; /* Google Blue */
+            color: white;
+        }
+        .google-button:hover {
+            background-color: #357ae8;
+        }
+        .apple-button {
+            background-color: #000000; /* Apple Black */
+            color: white;
+        }
+        .apple-button:hover {
+            background-color: #333333;
+        }
+        .email-button {
+            background-color: #DB4437; /* Similar to Gmail red */
+            color: white;
+        }
+        .email-button:hover {
+            background-color: #c23321;
+        }
 
-      /* Main content background gradient */
-      .main-bg-gradient {
-        background: linear-gradient(
-          135deg,
-          #a7bfe8 0%,
-          #6190e8 100%
-        ); /* Blue gradient */
-      }
+        /* Main content background gradient */
+        .main-bg-gradient {
+            background: linear-gradient(135deg, #a7bfe8 0%, #6190e8 100%); /* Blue gradient */
+        }
 
-      /* Profile icon and dropdown menu */
-      .profile-icon-container {
-        position: relative;
-        cursor: pointer;
-      }
-      .profile-dropdown {
-        position: absolute;
-        top: calc(100% + 10px); /* Position below the icon */
-        right: 0;
-        background-color: rgba(
-          0,
-          0,
-          0,
-          0.85
-        ); /* Slightly darker for better contrast */
-        color: white;
-        padding: 1rem;
-        border-radius: 0.75rem; /* More rounded */
-        white-space: nowrap;
-        opacity: 0;
-        visibility: hidden;
-        transform: scale(0.9); /* Start smaller */
-        transform-origin: top right;
-        transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-        z-index: 10;
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* Stronger shadow */
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem; /* Space between items */
-      }
-      .profile-dropdown.show {
-        opacity: 1;
-        visibility: visible;
-        transform: scale(1);
-      }
-      .profile-dropdown-item {
-        padding: 0.5rem 0.75rem;
-        border-radius: 0.375rem;
-        transition: background-color 0.2s ease;
-      }
-      .profile-dropdown-item:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-      }
-      .profile-dropdown-logout-btn {
-        background-color: #ef4444; /* Red for logout */
-        color: white;
-        padding: 0.5rem 1rem;
-        border-radius: 0.5rem;
-        font-weight: 600;
-        text-align: center;
-        transition: background-color 0.2s ease, transform 0.1s ease;
-      }
-      .profile-dropdown-logout-btn:hover {
-        background-color: #dc2626;
-        transform: translateY(-1px);
-      }
+        /* Profile icon and dropdown menu */
+        .profile-icon-container {
+            position: relative;
+            cursor: pointer;
+        }
+        .profile-dropdown {
+            position: absolute;
+            top: calc(100% + 10px); /* Position below the icon */
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.85); /* Slightly darker for better contrast */
+            color: white;
+            padding: 1rem;
+            border-radius: 0.75rem; /* More rounded */
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0.9); /* Start smaller */
+            transform-origin: top right;
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+            z-index: 10;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* Stronger shadow */
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem; /* Space between items */
+        }
+        .profile-dropdown.show {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+        }
+        .profile-dropdown-item {
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.375rem;
+            transition: background-color 0.2s ease;
+        }
+        .profile-dropdown-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .profile-dropdown-logout-btn {
+            background-color: #EF4444; /* Red for logout */
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+        .profile-dropdown-logout-btn:hover {
+            background-color: #DC2626;
+            transform: translateY(-1px);
+        }
 
-      /* Modal styles */
-      .modal-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.6);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 1000;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.3s ease, visibility 0.3s ease;
-      }
-      .modal-overlay.show {
-        opacity: 1;
-        visibility: visible;
-      }
-      .modal-content {
-        background-color: white;
-        padding: 2.5rem;
-        border-radius: 1rem;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-        max-width: 450px;
-        width: 90%;
-        position: relative;
-        transform: translateY(-20px);
-        transition: transform 0.3s ease;
-      }
-      .modal-overlay.show .modal-content {
-        transform: translateY(0);
-      }
-      .modal-close-button {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        background: none;
-        border: none;
-        font-size: 1.5rem;
-        cursor: pointer;
-        color: #666;
-        transition: color 0.2s ease;
-      }
-      .modal-close-button:hover {
-        color: #333;
-      }
+        /* Modal styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            max-width: 450px;
+            width: 90%;
+            position: relative;
+            transform: translateY(-20px);
+            transition: transform 0.3s ease;
+        }
+        .modal-overlay.show .modal-content {
+            transform: translateY(0);
+        }
+        .modal-close-button {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.2s ease;
+        }
+        .modal-close-button:hover {
+            color: #333;
+        }
 
-      /* Social icons in header */
-      .header-social-icon {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 35px; /* Slightly smaller for header */
-        height: 35px; /* Slightly smaller for header */
-        border-radius: 50%;
-        color: #4a5568; /* Darker gray for contrast on white header */
-        transition: background-color 0.3s ease, transform 0.2s ease,
-          color 0.3s ease;
-      }
-      .header-social-icon:hover {
-        background-color: #e2e8f0; /* Light gray background on hover */
-        color: #2b6cb0; /* Blue color on hover */
-        transform: translateY(-2px) scale(1.1);
-      }
+        /* Social icons in header */
+        .header-social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px; /* Slightly smaller for header */
+            height: 35px; /* Slightly smaller for header */
+            border-radius: 50%;
+            color: #4a5568; /* Darker gray for contrast on white header */
+            transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
+        }
+        .header-social-icon:hover {
+            background-color: #e2e8f0; /* Light gray background on hover */
+            color: #2b6cb0; /* Blue color on hover */
+            transform: translateY(-2px) scale(1.1);
+        }
     </style>
-  </head>
-  <body class="flex flex-col min-h-screen">
+</head>
+<body class="flex flex-col min-h-screen">
+
     <!-- Header -->
-    <header
-      class="bg-white shadow-md p-4 flex items-center justify-between z-20 transition-all duration-300 hover:shadow-lg"
-    >
-      <!-- Left content (empty for now, pushes logo to center) -->
-      <div class="flex-1"></div>
+    <header class="bg-white shadow-md p-4 flex items-center justify-between z-20 transition-all duration-300 hover:shadow-lg">
+        <!-- Left content (empty for now, pushes logo to center) -->
+        <div class="flex-1"></div>
 
-      <!-- Logo in Menu Bar - Centered -->
-      <div class="flex-shrink-0">
-        <img
-          src="logo.png"
-          alt="Admission Excellence Logo"
-          class="h-16 w-auto transform transition-transform duration-200 hover:scale-110"
-        />
-      </div>
-
-      <!-- Navigation and Profile Section - Right aligned -->
-      <nav class="flex-1 flex justify-end items-center space-x-6">
-        <!-- Social Media Icons in Header -->
-        <div class="flex space-x-3">
-          <!-- Facebook -->
-          <a
-            href="https://facebook.com"
-            target="_blank"
-            aria-label="Facebook"
-            class="header-social-icon"
-          >
-            <svg
-              class="w-5 h-5"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33V22C18.343 21.128 22 16.991 22 12z"
-                clip-rule="evenodd"
-              />
-            </svg>
-          </a>
-          <!-- Instagram -->
-          <a
-            href="https://instagram.com"
-            target="_blank"
-            aria-label="Instagram"
-            class="header-social-icon"
-          >
-            <svg
-              class="w-5 h-5"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M12.225 3.325a.75.75 0 00-.45 0C8.374 3.447 5.724 4.542 3.82 6.438A9.75 9.75 0 002.047 12c0 1.906.697 3.673 1.973 5.062 1.896 1.896 4.546 2.991 8.405 3.113a.75.75 000 .45 0 00.45 0c3.859-.122 6.509-1.217 8.405-3.113 1.276-1.389 1.973-3.156 1.973-5.062 0-1.906-.697-3.673-1.973-5.062-1.896-1.896-4.546-2.991-8.405-3.113zM12 18a6 6 0 100-12 6 6 0 000 12z"
-                clip-rule="evenodd"
-              />
-              <circle cx="12" cy="12" r="3.5" />
-              <circle cx="17.5" cy="6.5" r="1.5" />
-            </svg>
-          </a>
-          <!-- LinkedIn -->
-          <a
-            href="https://linkedin.com"
-            target="_blank"
-            aria-label="LinkedIn"
-            class="header-social-icon"
-          >
-            <svg
-              class="w-5 h-5"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path
-                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
-              />
-            </svg>
-          </a>
-          <!-- YouTube -->
-          <a
-            href="https://youtube.com"
-            target="_blank"
-            aria-label="YouTube"
-            class="header-social-icon"
-          >
-            <svg
-              class="w-5 h-5"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path
-                d="M19.615 3.184c-1.077-.29-3.76-.363-7.615-.363s-6.538.073-7.615.363C3.184 3.76 2.76 4.792 2.76 6.096v11.808c0 1.304.424 2.336 1.229 2.912 1.077.29 3.76.363 7.615.363s6.538-.073 7.615-.363c.805-.576 1.229-1.608 1.229-2.912V6.096c0-1.304-.424-2.336-1.229-2.912zM9.998 16.002V8.002L16 12l-6.002 4.002z"
-              />
-            </svg>
-          </a>
+        <!-- Logo in Menu Bar - Centered -->
+        <div class="flex-shrink-0">
+            <img src="uploaded:Gemini_Generated_Image_2zlfn52zlfn52zlf-removebg-preview.png-6b9569d3-ffe6-4cba-8dc8-a425877a7409" alt="Admission Excellence Logo" class="h-20 w-auto transform transition-transform duration-200 hover:scale-110">
         </div>
-        <button
-          id="login-button"
-          class="bg-blue-600 text-white px-5 py-2 rounded-md font-semibold hover:bg-blue-700 transition-colors duration-200 shadow-md"
-        >
-          Log In
-        </button>
-        <div
-          class="profile-icon-container relative"
-          id="profile-icon-container"
-        >
-          <!-- Avatar Image - Updated to a more visually appealing online source -->
-          <img
-            src="https://api.dicebear.com/7.x/adventurer/svg?seed=Felix&radius=50&backgroundColor=b6e3f4,c0aede,d1d4f9"
-            alt="User Avatar"
-            class="h-10 w-10 rounded-full border-2 border-blue-500 cursor-pointer transition-transform duration-200 hover:scale-110"
-          />
-
-          <!-- Profile Dropdown Menu -->
-          <div id="profile-dropdown" class="profile-dropdown">
-            <div class="profile-dropdown-item text-lg font-semibold">
-              John Doe
+        
+        <!-- Navigation and Profile Section - Right aligned -->
+        <nav class="flex-1 flex justify-end items-center space-x-6">
+            <!-- Social Media Icons in Header -->
+            <div class="flex space-x-3">
+                <!-- Facebook -->
+                <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="header-social-icon">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33V22C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+                <!-- Instagram -->
+                <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="header-social-icon">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M12.225 3.325a.75.75 0 00-.45 0C8.374 3.447 5.724 4.542 3.82 6.438A9.75 9.75 0 002.047 12c0 1.906.697 3.673 1.973 5.062 1.896 1.896 4.546 2.991 8.405 3.113a.75.75 000 .45 0 00.45 0c3.859-.122 6.509-1.217 8.405-3.113 1.276-1.389 1.973-3.156 1.973-5.062 0-1.906-.697-3.673-1.973-5.062-1.896-1.896-4.546-2.991-8.405-3.113zM12 18a6 6 0 100-12 6 6 0 000 12z" clip-rule="evenodd" />
+                        <circle cx="12" cy="12" r="3.5" />
+                        <circle cx="17.5" cy="6.5" r="1.5" />
+                    </svg>
+                </a>
+                <!-- LinkedIn -->
+                <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="header-social-icon">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </a>
+                <!-- YouTube -->
+                <a href="https://youtube.com" target="_blank" aria-label="YouTube" class="header-social-icon">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M19.615 3.184c-1.077-.29-3.76-.363-7.615-.363s-6.538.073-7.615.363C3.184 3.76 2.76 4.792 2.76 6.096v11.808c0 1.304.424 2.336 1.229 2.912 1.077.29 3.76.363 7.615.363s6.538-.073 7.615-.363c.805-.576 1.229-1.608 1.229-2.912V6.096c0-1.304-.424-2.336-1.229-2.912zM9.998 16.002V8.002L16 12l-6.002 4.002z"/>
+                    </svg>
+                </a>
             </div>
-            <!-- Placeholder User Name -->
-            <div
-              class="profile-dropdown-item text-sm text-gray-300"
-              id="dropdown-datetime"
-            ></div>
-            <button class="profile-dropdown-logout-btn" id="logout-button">
-              Log Out
+            <button id="login-button" class="bg-blue-600 text-white px-5 py-2 rounded-md font-semibold hover:bg-blue-700 transition-colors duration-200 shadow-md">
+                Log In
             </button>
-          </div>
-        </div>
-      </nav>
+            <div class="profile-icon-container relative" id="profile-icon-container">
+                <!-- Avatar Image - Updated to a more visually appealing online source -->
+                <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Felix&radius=50&backgroundColor=b6e3f4,c0aede,d1d4f9" alt="User Avatar" class="h-10 w-10 rounded-full border-2 border-blue-500 cursor-pointer transition-transform duration-200 hover:scale-110">
+                
+                <!-- Profile Dropdown Menu -->
+                <div id="profile-dropdown" class="profile-dropdown">
+                    <div class="profile-dropdown-item text-lg font-semibold">John Doe</div> <!-- Placeholder User Name -->
+                    <div class="profile-dropdown-item text-sm text-gray-300" id="dropdown-datetime"></div>
+                    <button class="profile-dropdown-logout-btn" id="logout-button">Log Out</button>
+                </div>
+            </div>
+        </nav>
     </header>
 
     <!-- Main Content Area -->
-    <main
-      class="flex-grow flex flex-col items-center justify-center p-6 main-bg-gradient"
-    >
-      <!-- Under Construction Banner -->
-      <div
-        class="under-construction-banner text-white p-10 rounded-xl shadow-2xl text-center max-w-5xl w-full transform transition-transform duration-300 hover:scale-105 mx-auto"
-      >
-        <h2 class="text-6xl font-extrabold mb-6 drop-shadow-lg">
-          Website Under Construction!
-        </h2>
-        <p class="text-2xl font-medium leading-relaxed">
-          We're meticulously crafting an unparalleled academic portal experience
-          just for you.
-        </p>
-        <p class="text-xl mt-4">
-          Anticipate exciting features and resources. Please check back soon!
-        </p>
-        <!-- Simple Construction Illustration (SVG) -->
-        <svg
-          class="construction-illustration"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect>
-          <path d="M17 2h-1a2 2 0 0 0-2 2v3"></path>
-          <path d="M7 2h1a2 2 0 0 1 2 2v3"></path>
-          <line x1="12" y1="11" x2="12" y2="15"></line>
-          <line x1="16" y1="11" x2="16" y2="15"></line>
-          <line x1="8" y1="11" x2="8" y2="15"></line>
-          <line x1="2" y1="11" x2="22" y2="11"></line>
-          <line x1="2" y1="15" x2="22" y2="15"></line>
-        </svg>
-      </div>
+    <main class="flex-grow flex flex-col items-center justify-center p-6 main-bg-gradient">
+        <!-- Under Construction Banner -->
+        <div class="under-construction-banner text-white p-10 rounded-xl shadow-2xl text-center max-w-5xl w-full transform transition-transform duration-300 hover:scale-105 mx-auto">
+            <h2 class="text-6xl font-extrabold mb-6 drop-shadow-lg">Website Under Construction!</h2>
+            <p class="text-2xl font-medium leading-relaxed">We're meticulously crafting an unparalleled academic portal experience just for you.</p>
+            <p class="text-xl mt-4">Anticipate exciting features and resources. Please check back soon!</p>
+            <!-- Simple Construction Illustration (SVG) -->
+            <svg class="construction-illustration" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect>
+                <path d="M17 2h-1a2 2 0 0 0-2 2v3"></path>
+                <path d="M7 2h1a2 2 0 0 1 2 2v3"></path>
+                <line x1="12" y1="11" x2="12" y2="15"></line>
+                <line x1="16" y1="11" x2="16" y2="15"></line>
+                <line x1="8" y1="11" x2="8" y2="15"></line>
+                <line x1="2" y1="11" x2="22" y2="11"></line>
+                <line x1="2" y1="15" x2="22" y2="15"></line>
+            </svg>
+        </div>
     </main>
 
     <!-- Login Modal -->
     <div id="login-modal" class="modal-overlay">
-      <div class="modal-content text-center">
-        <button id="close-modal-button" class="modal-close-button">
-          &times;
-        </button>
-        <h3 class="text-3xl font-bold text-gray-800 mb-8">
-          Embark on Your Academic Journey
-        </h3>
-        <div class="space-y-5">
-          <!-- Google Login -->
-          <button class="social-button google-button w-full">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png"
-              alt="Google logo"
-            />
-            Log in with Google
-          </button>
+        <div class="modal-content text-center">
+            <button id="close-modal-button" class="modal-close-button">&times;</button>
+            <h3 class="text-3xl font-bold text-gray-800 mb-8">Embark on Your Academic Journey</h3>
+            <div class="space-y-5">
+                <!-- Google Login -->
+                <button class="social-button google-button w-full">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png" alt="Google logo">
+                    Log in with Google
+                </button>
 
-          <!-- Apple Login -->
-          <button class="social-button apple-button w-full">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1200px-Apple_logo_black.svg.png"
-              alt="Apple logo"
-            />
-            Log in with Apple
-          </button>
+                <!-- Apple Login -->
+                <button class="social-button apple-button w-full">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1200px-Apple_logo_black.svg.png" alt="Apple logo">
+                    Log in with Apple
+                </button>
 
-          <!-- Email Login -->
-          <button class="social-button email-button w-full">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Gmail_Icon.png/768px-Gmail_Icon.png"
-              alt="Email icon"
-            />
-            Log in with Email
-          </button>
+                <!-- Email Login -->
+                <button class="social-button email-button w-full">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Gmail_Icon.png/768px-Gmail_Icon.png" alt="Email icon">
+                    Log in with Email
+                </button>
+            </div>
+            <p class="text-sm text-gray-500 mt-8">By logging in, you agree to our <a href="#" class="text-blue-600 hover:underline font-medium">Terms of Service</a> and <a href="#" class="text-blue-600 hover:underline font-medium">Privacy Policy</a>.</p>
         </div>
-        <p class="text-sm text-gray-500 mt-8">
-          By logging in, you agree to our
-          <a href="#" class="text-blue-600 hover:underline font-medium"
-            >Terms of Service</a
-          >
-          and
-          <a href="#" class="text-blue-600 hover:underline font-medium"
-            >Privacy Policy</a
-          >.
-        </p>
-      </div>
     </div>
 
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const loginButton = document.getElementById("login-button");
-        const loginModal = document.getElementById("login-modal");
-        const closeModalButton = document.getElementById("close-modal-button");
-        const googleButton = document.querySelector(".google-button");
-        const appleButton = document.querySelector(".apple-button");
-        const emailButton = document.querySelector(".email-button");
-        const profileIconContainer = document.getElementById(
-          "profile-icon-container"
-        );
-        const profileDropdown = document.getElementById("profile-dropdown");
-        const dropdownDatetime = document.getElementById("dropdown-datetime");
-        const logoutButton = document.getElementById("logout-button");
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginButton = document.getElementById('login-button');
+            const loginModal = document.getElementById('login-modal');
+            const closeModalButton = document.getElementById('close-modal-button');
+            const googleButton = document.querySelector('.google-button');
+            const appleButton = document.querySelector('.apple-button');
+            const emailButton = document.querySelector('.email-button');
+            const profileIconContainer = document.getElementById('profile-icon-container');
+            const profileDropdown = document.getElementById('profile-dropdown');
+            const dropdownDatetime = document.getElementById('dropdown-datetime');
+            const logoutButton = document.getElementById('logout-button');
 
-        // --- Login Button Click Handlers ---
-        googleButton.addEventListener("click", () => {
-          console.log("Google login clicked!");
-          alertUser("Google login functionality is coming soon!");
-        });
+            // --- Login Button Click Handlers ---
+            googleButton.addEventListener('click', () => {
+                console.log('Google login clicked!');
+                alertUser('Google login functionality is coming soon!');
+            });
 
-        appleButton.addEventListener("click", () => {
-          console.log("Apple login clicked!");
-          alertUser("Apple login functionality is coming soon!");
-        });
+            appleButton.addEventListener('click', () => {
+                console.log('Apple login clicked!');
+                alertUser('Apple login functionality is coming soon!');
+            });
 
-        emailButton.addEventListener("click", () => {
-          console.log("Email login clicked!");
-          alertUser("Email login functionality is coming soon!");
-        });
+            emailButton.addEventListener('click', () => {
+                console.log('Email login clicked!');
+                alertUser('Email login functionality is coming soon!');
+            });
 
-        // --- Modal Open/Close ---
-        loginButton.addEventListener("click", () => {
-          loginModal.classList.add("show");
-        });
+            // --- Modal Open/Close ---
+            loginButton.addEventListener('click', () => {
+                loginModal.classList.add('show');
+            });
 
-        closeModalButton.addEventListener("click", () => {
-          loginModal.classList.remove("show");
-        });
+            closeModalButton.addEventListener('click', () => {
+                loginModal.classList.remove('show');
+            });
 
-        // Close modal when clicking outside of it
-        loginModal.addEventListener("click", (event) => {
-          if (event.target === loginModal) {
-            loginModal.classList.remove("show");
-          }
-        });
+            // Close modal when clicking outside of it
+            loginModal.addEventListener('click', (event) => {
+                if (event.target === loginModal) {
+                    loginModal.classList.remove('show');
+                }
+            });
 
-        // --- Profile Icon Click for Dropdown ---
-        profileIconContainer.addEventListener("click", (event) => {
-          event.stopPropagation(); // Prevent click from bubbling to document and closing immediately
-          profileDropdown.classList.toggle("show");
-          if (profileDropdown.classList.contains("show")) {
-            updateDropdownDateTime();
-          }
-        });
+            // --- Profile Icon Click for Dropdown ---
+            profileIconContainer.addEventListener('click', (event) => {
+                event.stopPropagation(); // Prevent click from bubbling to document and closing immediately
+                profileDropdown.classList.toggle('show');
+                if (profileDropdown.classList.contains('show')) {
+                    updateDropdownDateTime();
+                }
+            });
 
-        // Close dropdown when clicking outside
-        document.addEventListener("click", (event) => {
-          if (
-            !profileIconContainer.contains(event.target) &&
-            profileDropdown.classList.contains("show")
-          ) {
-            profileDropdown.classList.remove("show");
-          }
-        });
+            // Close dropdown when clicking outside
+            document.addEventListener('click', (event) => {
+                if (!profileIconContainer.contains(event.target) && profileDropdown.classList.contains('show')) {
+                    profileDropdown.classList.remove('show');
+                }
+            });
 
-        // --- Update Date and Time in Dropdown ---
-        function updateDropdownDateTime() {
-          const now = new Date();
-          const dateOptions = {
-            weekday: "long",
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          };
-          const timeOptions = {
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit",
-          };
-          const formattedDate = now.toLocaleDateString(undefined, dateOptions);
-          const formattedTime = now.toLocaleTimeString(undefined, timeOptions);
-          dropdownDatetime.textContent = `${formattedDate} ${formattedTime}`;
-        }
+            // --- Update Date and Time in Dropdown ---
+            function updateDropdownDateTime() {
+                const now = new Date();
+                const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
+                const formattedDate = now.toLocaleDateString(undefined, dateOptions);
+                const formattedTime = now.toLocaleTimeString(undefined, timeOptions);
+                dropdownDatetime.textContent = `${formattedDate} ${formattedTime}`;
+            }
 
-        // --- Logout Button Click Handler ---
-        logoutButton.addEventListener("click", () => {
-          console.log("Logout clicked!");
-          alertUser(
-            "You have been logged out (functionality to be implemented)."
-          );
-          profileDropdown.classList.remove("show"); // Close dropdown after clicking logout
-          // In a real application, you would handle user session termination here.
-        });
+            // --- Logout Button Click Handler ---
+            logoutButton.addEventListener('click', () => {
+                console.log('Logout clicked!');
+                alertUser('You have been logged out (functionality to be implemented).');
+                profileDropdown.classList.remove('show'); // Close dropdown after clicking logout
+                // In a real application, you would handle user session termination here.
+            });
 
-        // --- Custom Alert Function (to avoid window.alert()) ---
-        function alertUser(message) {
-          const alertBox = document.createElement("div");
-          alertBox.className =
-            "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50";
-          alertBox.innerHTML = `
+            // --- Custom Alert Function (to avoid window.alert()) ---
+            function alertUser(message) {
+                const alertBox = document.createElement('div');
+                alertBox.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+                alertBox.innerHTML = `
                     <div class="bg-white p-6 rounded-lg shadow-xl text-center max-w-sm">
                         <p class="text-lg font-semibold mb-4">${message}</p>
                         <button id="closeAlert" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md">
@@ -619,15 +447,13 @@
                         </button>
                     </div>
                 `;
-          document.body.appendChild(alertBox);
+                document.body.appendChild(alertBox);
 
-          document
-            .getElementById("closeAlert")
-            .addEventListener("click", () => {
-              document.body.removeChild(alertBox);
-            });
-        }
-      });
+                document.getElementById('closeAlert').addEventListener('click', () => {
+                    document.body.removeChild(alertBox);
+                });
+            }
+        });
     </script>
-  </body>
+</body>
 </html>
