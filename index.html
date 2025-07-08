@@ -8,7 +8,7 @@
     <link
       rel="icon"
       href="logo.png"
-      type="image/x-icon"
+      type="image/png"
     />
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -291,21 +291,20 @@
     <header
       class="bg-white shadow-md p-4 flex items-center justify-between z-20 transition-all duration-300 hover:shadow-lg"
     >
-      <div class="flex items-center">
-        <!-- Logo in Menu Bar -->
+      <!-- Left content (empty for now, pushes logo to center) -->
+      <div class="flex-1"></div>
+
+      <!-- Logo in Menu Bar - Centered -->
+      <div class="flex-shrink-0">
         <img
-          src="https://placehold.co/50x50/007bff/ffffff?text=AE"
+          src="logo.png"
           alt="Admission Excellence Logo"
-          class="h-12 w-12 rounded-full mr-3 transform transition-transform duration-200 hover:scale-110"
+          class="h-16 w-auto transform transition-transform duration-200 hover:scale-110"
         />
-        <h1
-          class="text-3xl font-bold text-gray-800 transform transition-transform duration-200 hover:scale-105"
-        >
-          Admission Excellence
-        </h1>
       </div>
-      <!-- Navigation and Profile Section -->
-      <nav class="flex items-center space-x-6">
+
+      <!-- Navigation and Profile Section - Right aligned -->
+      <nav class="flex-1 flex justify-end items-center space-x-6">
         <!-- Social Media Icons in Header -->
         <div class="flex space-x-3">
           <!-- Facebook -->
